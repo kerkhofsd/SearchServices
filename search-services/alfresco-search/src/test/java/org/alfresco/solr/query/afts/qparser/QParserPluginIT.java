@@ -488,6 +488,7 @@ public class QParserPluginIT extends AbstractQParserPluginIT implements QueryCon
         assertAQuery("\\@" + intFieldName + ":01", 1);
         assertAQuery("\\@" + intFieldName + ":\"001\"", 1);
         assertAQuery("\\@" + intFieldName + ":\"0001\"", 1);
+        assertAQuery("\\@" + intFieldName + ":\"2147483648\"", 0);
 
         assertAQuery("\\@" + intFieldName + ":[A TO 2]", 1);
         assertAQuery("\\@" + intFieldName + ":[0 TO 2]", 1);
@@ -511,6 +512,7 @@ public class QParserPluginIT extends AbstractQParserPluginIT implements QueryCon
         assertAQuery("\\@" + longFieldName + ":\"2\"", 1);
         assertAQuery("\\@" + longFieldName + ":\"02\"", 1);
         assertAQuery("\\@" + longFieldName + ":\"002\"", 1);
+        assertAQuery("\\@" + longFieldName + ":\"9223372036854775808\"", 0);
 
         assertAQuery("\\@" + longFieldName + ":\"0002\"", 1);
         assertAQuery("\\@" + longFieldName + ":[A TO 2]", 1);
